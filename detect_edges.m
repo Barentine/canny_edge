@@ -1,6 +1,6 @@
 
 %load image
-image = imread([pwd, '/data/xy001-1.png']);
+image = double(imread([pwd, '/data/xy001-1.png']));
 
 % ignore noise with Gaussian filter
 sigma = 3;
