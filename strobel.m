@@ -1,7 +1,5 @@
-function [outputArg1,outputArg2] = strobel(inputArg1,inputArg2)
-%STROBEL Summary of this function goes here
-%   Detailed explanation goes here
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
+function out_Image = strobel(in_Image)
+% Function for Sober filtering
+out_Image = edge(in_Image,'Sobel');
 end
 
