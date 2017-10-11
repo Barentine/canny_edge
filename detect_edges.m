@@ -1,7 +1,16 @@
-function [outputArg1,outputArg2] = detect_edges(inputArg1,inputArg2)
-%DETECT_EDGES Summary of this function goes here
-%   Detailed explanation goes here
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
-end
 
+%load image
+image = imread([pwd, '/data/xy001-1.png']);
+
+% ignore noise with Gaussian filter
+sigma = 3;
+filtered = gauss_filter(image, sigma);
+
+% find edges roughly with strobel filter
+raw_edges = strobel(image);
+
+% thin edges with nonmaximal suppresion
+non_max_suppressed = nonmaximal_sup(raw_edges);
+
+% join edges with hysteresis thresholding
+edges = hystersis_threshold(non_max_suppressed);
